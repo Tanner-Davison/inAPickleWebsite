@@ -1,0 +1,88 @@
+body {
+    
+    height:100vh;
+    width: 100vw;
+    margin:0px;
+    background-color: black;
+}
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.newClass{
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+   
+}
+.youTubeLogo{
+    margin-top: 50px;
+    height:200px;
+    width:300;
+    border-radius: 30%;
+}
+#formId{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#formsubmitted{
+    display:flex;
+    height:100%;
+    width:100%d;
+    border: 50px bold black;
+    flex-wrap: wrap;
+}
+
+.courtCard{
+display:flex;
+flex-direction: column;
+align-items:center;
+height: 200px;
+width:300px;
+color:white;
+background-color: black;
+border: bold 5 px black;
+font-family: 'Roboto Condensed', sans-serif;
+border-radius: 25%;
+height:420px;
+width: 420px;
+transform-style: preserve-3d;
+margin:25px;
+box-shadow: inset 2px 2px 10px;
+;
+
+}
+#dimensions{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    transform: translateZ(40px)
+
+}
+.areaOfCourt{
+    display:flex;
+    flex-direction: column;
+    font-size: larger;
+
+}
+#courtWithWidth{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    
+
+}
+#courtIMG{
+    height:200px;
+    width:300px;
+    margin-right:25px;
+    transform: translateZ(1000px);
+    
+}
+.js-tilt-glare{
+    border-radius: 25%;
+}
