@@ -2,7 +2,7 @@ const form = document.getElementById('formId');
 const displayCourts = document.getElementById('formsubmitted');
 const courtObjects = []
 let courtID = 0;
-
+const baseURL = 'http://localhost:4500/api/cards'
 // create class of Court to generate court objects
 class Court {
     constructor(name, length, width,area, courtID){
@@ -12,6 +12,7 @@ class Court {
         this.area = area;
         this.courtID= courtID;
     }
+    //making a new card (you can call this when adding a new object Court Object)
     generateCourtInfo() {
         const courtInfo = document.createElement('div');
         // for tilt.js
@@ -39,63 +40,99 @@ class Court {
 }
 function onClick(event){
     
-event.preventDefault()
+
+const getAllCards = ()=>{
+    axios.get(baseURL)
+    .then((res) => {
+        console.log(res)
+        console.log(res.body)
+        res.data.forEach(court => {
+            console.log(court)
+        })
+    })
+    }
+    getAllCards()
+    event.preventDefault()
     const headerContainer = document.querySelector('.headerContainer');
     
-    if(headerContainer){
-    headerContainer.classList.remove('headerContainer');
-    headerContainer.classList.add('newClass');
-    const addNewCourt = document.createElement('h1')
-    addNewCourt.textContent='Create new court'
-    form.prepend(addNewCourt)
-    }else{
-        console.log('working')
-    }
     
+
+    //declaring inputbox Elements
     const courtNameInput = document.getElementById('courtName');
     const lengthInput = document.getElementById('length');
     const widthInput = document.getElementById('width');
     //getting values from input boxes 
     const courtName = courtNameInput.value;
+    const courtNameUpperCased = courtName.charAt(0).toUpperCase()
+    + courtName.slice(1)
     const length = lengthInput.value;
     const width = widthInput.value;
     const courtArea = lengthInput.value * widthInput.value;
-    // add one to the court id
+
+    if(headerContainer){
+        headerContainer.classList.remove('headerContainer');
+        headerContainer.classList.add('newClass');
+        const addNewCourt = document.createElement('div')
+        if(addNewCourt && !addNewCourt.innerHTML){
+        addNewCourt.innerHTML=`<h1>Create New</h1>`
+        addNewCourt.classList.add('addNewCourt')
+        form.prepend(addNewCourt)
+        }
+    }
+    
+    // add one to the global court id
     courtID +=1
     
     //create new court object
-    const court = new Court(courtName,length, width, courtArea, courtID);
+    const court = new Court(courtNameUpperCased,length, width, courtArea, courtID);
     // run class method on object to generate our card
     const courtInfo = court.generateCourtInfo();
-    const deleteBTN = document.createElement('button')
-
     displayCourts.appendChild(courtInfo);
     $(".courtCard").tilt({
         'maxGlare': .2,
         scale: 1,
     });
-   
+    //add the new court to the court Objects array
     courtObjects.push(court)
-// if courtcared exists then add a delete button to card
-if(courtInfo.classList='courtCard'){
-    deleteBTN.style=`width:100px;,
-                     height:100px;
-                     color:black;
-                    `
-    deleteBTN.textContent="DELETE"
-    courtInfo.appendChild(deleteBTN)
- }
 
+   //create your cards BTNS container
+  const cardBtnContainer = document.createElement('div')
+  
+ // if courtInfo exists then add the functionality buttons
+if(courtInfo.classList='courtCard'){
+    
+    cardBtnContainer.classList.add('cardBtnContainer')
+
+
+    cardBtnContainer.innerHTML=`
+    <button class='btnCard' id='notesBtn'>Notes</button>
+    <button class='btnCard' id='infoBtn'>Court Info</button>
+    <button class='btnCard' id='customerInfo'>Customer Details</button>
+    <button class='btnCard' id='deleteBTN'>Delete Court</button>
+`
+    courtInfo.appendChild(cardBtnContainer)
+ }else{}
+
+ function changeClass(){
+    if(courtObjects.length===0){
+        headerContainer.classList.remove('newClass')
+        headerContainer.classList.add('headerContainer')
+    }
+ }
+ const deleteBTN = document.getElementById('deleteBTN')
 
  deleteBTN.addEventListener('click', () => {
     courtInfo.parentNode.removeChild(courtInfo);
     courtObjects.splice(courtObjects.indexOf(court), 1);
-  });
-
+    changeClass();
+  })
+  console.log(courtObjects)
+  
+}
 form.reset();
 
-}
 
-console.log(courtObjects)
 
+
+    
 form.addEventListener("submit", onClick)
