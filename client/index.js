@@ -2,6 +2,7 @@ const form = document.getElementById('formId');
 const displayCourts = document.getElementById('sectionContainer');
 const courtObjects = []
 const baseURL = 'http://localhost:4500/api'
+let isNewCourtAdded = false;
 
 // create class of Court to generate court objects
 
@@ -42,7 +43,7 @@ function generateCourtInfo(court) {
             <u>Width</u>
             <p style ='color:red'>${court.width}ft</p>
             </div>
-        <img alt="Pickleball Court" id="courtIMG" src="/photos/Screenshot 2023-05-29 at 9.27.31 PM.png">
+        <img alt="Pickleball Court" id="courtIMG" src="/photos/Screenshot 2023-05-29 at 9.27.31 PM.png"width='200' height='200'>
             </div>
         <div style='display:flex, flex-direction:column;font-size:18px;'>
             <u>Length</u>
@@ -69,8 +70,8 @@ function generateCourtInfo(court) {
      }
     //Below is require for tilt.js
     $(".courtCard").tilt({
-    'maxGlare': .2,
-    scale: 1,
+    'maxGlare': .0,
+    scale: 1.1,
     });
 
     return courtInfo;
@@ -111,25 +112,34 @@ function onClick(event){
     const courtObj = new Court(courtNameUpperCased,length, width, courtArea);
 
     //POST REQUEST
-    axios.post(`${baseURL}/court`,courtObj).then((res)=>{
-        displayCourts.innerHTML='';
-        res.data.forEach((courtObj)=>{
-            generateCourtInfo(courtObj)
-        })
-    }).catch((error)=>{
-        console.log(error)
+    axios
+    .post(`${baseURL}/court`, courtObj)
+    .then((res) => {
+      displayCourts.innerHTML = '';
+      res.data.forEach((courtObj) => {
+        generateCourtInfo(courtObj);
+      });
+
+      if (!isNewCourtAdded) {
+        // Add the "Add New Court" heading to the form
+        const addNewCourt = document.createElement('div');
+        addNewCourt.innerHTML = `
+          <h1>Add New Court</h1>
+        `;
+        addNewCourt.classList.add('addNewCourt');
+        form.appendChild(addNewCourt);
+        isNewCourtAdded = true;
+      }
     })
+    .catch((error) => {
+      console.log(error);
+    });
     //CHANGES OUR MAIN FORM AND PIC TO SWITCH FROM MIDDLE OF THE PAGE TO THE TOP LEFT DONE BY CHANGING THE CLASS.
     if(headerContainer.classList='newClass'){
         headerContainer.classList.remove('headerContainer');
         headerContainer.classList.add('newClass');
-        const addNewCourt = document.createElement('div')
-        if(addNewCourt && !addNewCourt.innerHTML){
-        addNewCourt.innerHTML=`<h1>Create New</h1>`
-        addNewCourt.classList.add('addNewCourt')
-        form.prepend(addNewCourt)
-        }
     }
+       
   form.reset();
 }
 

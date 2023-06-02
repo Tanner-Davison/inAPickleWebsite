@@ -1,4 +1,5 @@
 body {
+   
     height:100vh;
     width: 100vw;
     margin:0px;
@@ -8,61 +9,80 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 100px;
-}
-.addNewCourt{
-    display:flex;
-    width: 100%;
-    color:white;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 100px;
 }
 .newClass{
     display:flex;
     align-items: center;
     flex-direction: row;
 }
+
+.addNewCourt{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    color:white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 .youTubeLogo{
     margin-top: 50px;
     height:200px;
     width:300;
     border-radius: 30%;
 }
-#formId{
+
+#btnForm{
     display:flex;
-    flex-direction: column;
-    font-family: 'Roboto Condensed', sans-serif;
+    color:black;
+    justify-content: center;
 }
-.courtInputs{
-    display:flex;
-    height:25px;
-    width:200px;
-    font-family: 'Roboto Condensed', sans-serif;
-    margin-top:20px;
-}
+#inputBoxes {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    width: 120px; /* Adjust the width as needed */
+    margin-right: 10px;
+    font-weight: bold;
+    color:white;
+  }
+  
+  input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
 #sectionContainer{
     display:flex;
-    height:100%;
-    width:100%d;
-    border: 50px bold black;
-    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    height:700px;
+    width:100%;
+    overflow-x: auto;
+    overscroll-behavior: contain;
+    overscroll-behavior-y:auto;
+    
+    gap: 25px;
 }
 .courtCard{
 display:flex;
 flex-direction: column;
 align-items:center;
-height: 200px;
-width:300px;
 color:white;
 background-color: black;
 border: bold 5 px black;
 font-family: 'Roboto Condensed', sans-serif;
 border-radius: 15%;
-height:420px;
+height:fit-content;
 width: 490px;
 transform-style: preserve-3d;
-margin:25px;
 box-shadow: inset 2px 2px 10px;
 }
 /* courts dimensions on court card */
@@ -90,28 +110,30 @@ box-shadow: inset 2px 2px 10px;
     transform: translateZ(1000px);
     border-radius:10%;
 }
-.deleteBTN{
-    display:flex;
-    background-color: gray;
-    color:black;
-}
 .js-tilt-glare{
     border-radius: 15%;
 }
 .cardBtnContainer{
     display:flex;
+    justify-content: center;
     width:100%;
     gap:5px;
+    border-radius: 15%;
 }
 .btnCard{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     height: 40px;
-    width:100%;
+    width:20%;
     font-family: 'Roboto Condensed', sans-serif; 
     border-radius: 15%; 
     border:none;
     background-color: rgb(102, 132, 40);
-    color:whitesmoke;
+    color:snow;
     font-size: 15px;
+    margin-bottom: 25px;
 }
 .btnCard:hover{
     background-color: black;
