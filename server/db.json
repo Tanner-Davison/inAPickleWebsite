@@ -1,7 +1,8 @@
+
 [
     {
         "id":1,
-        "name": "Joes Court" ,
+        "name": "Joes Court",
         "length": 34,
         "width": 23,
         "area": 782,

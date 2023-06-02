@@ -6,10 +6,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const {getAllCards} = require('./ctrl')
+const {getAllCards, addCourt, deleteCourt} = require('./ctrl')
 
 app.get("/api/cards",getAllCards)
-
+app.post("/api/court",addCourt)
+app.delete("/api/court/:id",deleteCourt)
 
 
 
