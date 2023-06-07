@@ -4,7 +4,8 @@ module.exports = {
 
     getAllCards: (req, res) => {
         // Exclude the first item from the cards array
-        res.status(200).send(updatedCards);
+        res.status(200).send(cards);
+        
       },
 
     addCourt: (req,res)=>{
@@ -14,7 +15,7 @@ module.exports = {
     },
     deleteCourt: (req, res) => {
         const { id } = req.params;
-    
+        
         const updatedCards = cards.filter(card => card.id !== parseInt(id));
     
         if (updatedCards.length === cards.length) {
@@ -25,6 +26,25 @@ module.exports = {
         cards = updatedCards;
     
         res.status(200).send(cards);
-    }
+    },
+    
+    updateCourt: (req,res)=>{
+        const{id}= req.params
 
+        const courtIndex = cards.findIndex(card=> card.id === parseInt(id))
+        
+       
+        
+        if(courtIndex === -1){
+            return res.status(404).send("Court Not Found")
+        }
+        if(req.body.updatedName.length>0){
+        cards[courtIndex].name = req.body.updatedName
+        }
+        delete req.body.updatedName
+        //update Court information with the data from the req.body
+        cards[courtIndex] = { ...cards[courtIndex], ...req.body }
+        res.status(200).send(cards)
+        
+    }
 }
