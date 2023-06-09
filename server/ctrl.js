@@ -4,6 +4,7 @@ module.exports = {
 
     getAllCards: (req, res) => {
         // Exclude the first item from the cards array
+    
         res.status(200).send(cards);
         
       },
@@ -38,10 +39,10 @@ module.exports = {
         if(courtIndex === -1){
             return res.status(404).send("Court Not Found")
         }
-        if(req.body.updatedName.length>0){
-        cards[courtIndex].name = req.body.updatedName
+        if(req.body.Uname.length>0){
+        cards[courtIndex].name = req.body.Uname
         }
-        delete req.body.updatedName
+        delete req.body.Uname
         //update Court information with the data from the req.body
         cards[courtIndex] = { ...cards[courtIndex], ...req.body }
         res.status(200).send(cards)
