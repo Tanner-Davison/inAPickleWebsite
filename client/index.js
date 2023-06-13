@@ -68,8 +68,7 @@ class Court {
 		this.area = area;
 	}
 }
-if (headerContainer.classList.contains('headerContainer')) {
-}
+
 function onClick(e) {
 	e.preventDefault();
 
@@ -281,5 +280,7 @@ const changeStatus = function (id) {
 	court.replaceWith(markComplete)
 	
 };
-
+if (headerContainer.classList.contains('headerContainer')) {
+	displayCourts.style = 'display: none;'
+}
 form.addEventListener('submit', onClick);
