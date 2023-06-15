@@ -1,51 +1,95 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			rel="stylesheet"
+			href="styles.css" />
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap"
+			rel="stylesheet" />
+			<script src="https://kit.fontawesome.com/f652daacfc.js" crossorigin="anonymous"></script>
 
-</head>
-<body>
-    <div class="headerContainer">
-            <form id="formId" class="inputClass">
-                <img class="youTubeLogo" src="https://img1.wsimg.com/isteam/ip/4cd2bf2d-1192-4f00-8e02-6f020cedcfc4/In%20a%20pickle%20(500%20x%20501%20px)%20(9).png/:/rs=w:190,h:190,cg:true,m/cr=w:190,h:190/qt=q:95" alt="thumbnail">
-                <div id="inputBoxes">
-                <label for="courtName">Court Name:</label>
-                <input class='formId'id="courtName"type="text" placeholder="court's name">
-                </div>
+	</head>
+	<body>
+		<div class="headerContainer">
+			<form
+				id="formId"
+				class="inputClass">
+				<img
+					class="youTubeLogo"
+					src="https://img1.wsimg.com/isteam/ip/4cd2bf2d-1192-4f00-8e02-6f020cedcfc4/In%20a%20pickle%20(500%20x%20501%20px)%20(9).png/:/rs=w:190,h:190,cg:true,m/cr=w:190,h:190/qt=q:95"
+					alt="thumbnail" />
+				<div id="inputBoxes">
+					<label for="courtName">Court Name:</label>
+					<input
+						class="formId"
+						id="courtName"
+						type="text"
+						placeholder="court's name" />
+				</div>
 
-                <div id="inputBoxes">
-                <label for="length">Length: </label>
-                <input class='formId'id="length" type="text" placeholder="Enter length">
-                </div>
+				<div id="inputBoxes">
+					<label for="width">Width: </label>
+					<input
+						id="width"
+						type="text"
+						placeholder="Enter width " />
+				</div>
 
-                <div id="inputBoxes">
-                <label for="width">Width: </label>
-                <input id="width"type="text" placeholder="Enter width ">
-                </div>
-                
-                <button class='formId'id="btnForm" type="submit">Add Court</button>
-                
-            </form>
-            
-            
-            
-            <section id="sectionContainer" class="sectionContainer"></section>
-    </div>
-    
+				<div id="inputBoxes">
+					<label for="length">Length: </label>
+					<input
+						class="formId"
+						id="length"
+						type="text"
+						placeholder="Enter length" />
+				</div>
+				<div id="inputBoxes">
+					<label for="Select1">How Many Colors?</label>
+					<select
+						name="drop1"
+						id="formId">
+						<option value="One-Color">one-color</option>
+						<option value="Two-Color">two-color</option>
+						<option value="Three-Color">three-color</option>
+					</select>
+				</div>
+				<button
+					class="formId"
+					id="btnForm"
+					type="submit">
+					Add Court
+				</button>
+			</form>
 
+			<section
+				id="sectionContainer"
+				class="sectionContainer"
+				style="background-color: rgb(140, 124, 124)">
+				
+			</section>
+		</div>
 
-
-
-<script src = "../node_modules/axios/dist/axios.min.js"></script>
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/tilt.js/dest/tilt.jquery.js"></script>
-<script src="index.js"></script>
-</body>
+		<script src="../node_modules/axios/dist/axios.min.js"></script>
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../node_modules/tilt.js/dest/tilt.jquery.js"></script>
+		<script src="index.js"></script>
+	</body>
 </html>

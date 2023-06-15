@@ -1,3 +1,13 @@
 {
-    "liveServer.settings.port": 5501
+	"liveServer.settings.port": 5501,
+	"prettier.jsxSingleQuote": true,
+	"prettier.singleQuote": false,
+	"editor.formatOnType": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.enableDebugLogs": true,
+	"prettier.endOfLine": "auto",
+	"prettier.htmlWhitespaceSensitivity": "css",
+	"prettier.insertPragma": true
 }

@@ -1,199 +1,374 @@
-
-html, body {
-    margin: 0; 
-    height: 100vh; 
-    background-color: black;
+html,
+body {
+	position: relative;
+	margin: 0;
+	height: 100vh;
+	background-color: black;
 }
 .headerContainer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 100px;
-    color:white;
-    overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height:100vh;
+	color: white;
+	background-color: #166d3b;
+	background-image: linear-gradient(147deg, #166d3b 0%, #000000 90%);
 }
-.newClass{
-    display:flex;
-    flex-direction: row;
-    gap:75px;
-    margin-left:25px;
-    overflow: hidden;
+#formId {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 20px;
+	gap: 40px;
+	font-size: larger;
+	font-family: 'Roboto Condensed', sans-serif;
+	top:-15px;
 }
-.addNewCourt{
-    display:flex;
-    flex-direction: column;
-    width: 100%;
-    color:white;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto Condensed', sans-serif;
+#formId select {
+	font-size: large;
 }
-.youTubeLogo{
-    margin-top: 50px;
-    height:200px;
-    width:300;
-    border-radius: 30%;
-    background-color: black;
-    border-radius: 50%;
-    transform: translateZ(50px)
+.newClass {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	gap: 75px;
+	padding-left: 25px;
+	overflow: hidden;
+	background-color: #166d3b;
+	background-image: linear-gradient(147deg, #166d3b 0%, #000000 50%);
 }
-#btnForm{
-    display:flex;
-    color:black;
-    justify-content: center;
-    font-family: 'Roboto Condensed', sans-serif;
-    border-radius: 10%;
-    width:100px;
-    height: 22px;   
-    align-items: center;
-    border: none;
+.addNewCourt {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Roboto Condensed', sans-serif;
 }
-#btnForm:hover{
-    color: black;
-    font-size:medium;
+.youTubeLogo {
+	margin-top: 50px;
+	height: 200px;
+	width: 300;
+	border-radius: 30%;
+	background-color: black;
+	border-radius: 50%;
+	transform: translateZ(50px);
+}
+.changeStyle {
+  position: absolute;
+  transform-style: preserve-3d;
+  height: 50px;
+  width: 50px;
+  top: 10px;
+  right:100px;
+  
+}
+
+.changeStyle i {
+  height: 50px;
+  width: 50px;
+  font-size:25px; /* Adjust the font size as needed */
+ 
+
+}
+
+.changeStyle button {
+  display: hidden; /* Corrected the spelling error: "hidden" should be "none" */
+  background-color: transparent;
+  border:hidden;
+  height: 50px;
+  width: 50px;
+}
+
+#changeStylePhoto{
+	height:100px;
+	width:100px;
+	background-color: #4d4855;
+	background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+	opacity: 50%;
+	transform: translateZ(80px);
+	background-color:red;
+}
+#btnForm {
+	display: flex;
+	color: black;
+	justify-content: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	border-radius: 10%;
+	width: 100px;
+	height: 22px;
+	align-items: center;
+	border: none;
+}
+#btnForm:hover {
+	color: black;
+	font-size: medium;
 }
 #inputBoxes {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    font-family: 'Roboto Condensed', sans-serif;
-  }
-  label {
-    width: 120px; /* Adjust the width as needed */
-    margin-right: 10px;
-    font-weight: bold;
-    color:Green;
-  }
-  input {
-    flex: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-#sectionContainer{
-    display: flex;
-    flex-wrap:wrap;
-    width:1500px;
-    border-left: 5px groove white;
-    border-bottom-left-radius: 25%;
-    height: 700px;
-    width: 100%;
-    overflow-y: scroll;
-    gap:25px;
-    padding-bottom:45px;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	font-family: 'Roboto Condensed', sans-serif;
 }
-.sectionContainer2{
-    display: flex;
-    padding-top:50px;
-    position: relative;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:center;
-    background-color: white;
-    padding-bottom: 50px;
-    z-index: 2;
+label {
+	width: 120px; /* Adjust the width as needed */
+	margin-right: 10px;
+	font-weight: bold;
+	color: White;
 }
-.courtCard{
-    display:flex;
+input {
+	flex: 1;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+#sectionContainer {
+	display: flex;
+	flex-wrap: wrap;
+	border-left: 5px groove ;
+	background-color: #e9bcb7;
+	background-image: linear-gradient(315deg, #e9bcb7 0%, #29524a 74%); 
+	border-bottom-left-radius: 45%;
+	height: 700px;
+	width: 100%;
+	overflow-y: scroll;
+	gap: 25px;
+	padding-bottom: 45px;
+	justify-content: center;
+	transform-style: preserve-3d;
+}
+
+
+.courtCard {
+	position: relative;
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     background-color: white;
-    margin-left:30px;
+    margin-left: 30px;
     font-family: 'Roboto Condensed', sans-serif;
     border-radius: 30%;
-    border: 24px inset skyblue;
-    height:fit-content;
-    width: 590px;
+    border: 24px outset #226d25;
+    height: 77%;
+    width: 610px;
     transform-style: preserve-3d;
-    box-shadow: inset 7px 5px 7px black , inset -7px -5px 6px black ,inset 2px 3px 5px black;
-    color:black;
+    box-shadow: inset 2px 10px 30px black, inset 10px 15px 30px black, inset 8px 3px 30px black, inset -16px -16px 30px black, inset 10px -5px 6px black, inset 8px 3px 5px black;
+    color: black;
+    z-index: 10;
+    top: 20px;
 }
-.completeOverlay{
-    height: 400px;
-    width: 300px;
-    background-color: green;
+
+.completeOverlay {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	background-color: lightgreen;
+	opacity: 75%;
+	border-radius: 28%;
+	
+	transform-style: preserve-3d;
 }
-#formId{
-    display: flex;
+.completeOverlay p {
+	position: absolute;
+	font-size: 230px;
+	color: red;
+	opacity: 100%;
+	transform: translateZ(80px);
+}
+
+.courtIMG {
+	height: 200px;
+	width: 400px;
+	transform: translateZ(30px);
+	border-radius: 25%;
+	overscroll-behavior-y: contain;
+}
+.wrapperUpdateContainer {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	width: 500px;
+	justify-content: center;
+	align-items: center;
+	gap: 5em;
+	transform-style: preserve-3d;
+}
+.showInputContainer {
+	display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-left:20px;
-    gap: 13px;
-    font-size: larger;
-    font-family: 'Roboto Condensed', sans-serif;
+    height: 431px;
+    width: 65%;
+    color: black;
+    transform-style: preserve-3d;
 }
-.areaOfCourt{
-    display:flex;
-    flex-direction: column;
-    font-size: larger;
+#updateInputSection {
+	display: flex;
+	flex-direction: column;
+	gap:0.5em;
+	justify-content: space-evenly;
+	color: black;
+	transform-style: preserve-3d;
 }
-.courtIMG{
-    height:200px;
-    width:400px;
-    transform: translateZ(30px);
-    border-radius:25%;
-    overscroll-behavior-y: contain;
+.js-tilt-glare {
+	border-radius: 15%;
 }
-.wrapperUpdateContainer{
+#materialsContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 50px;
+	height: 100%;
+	width: 80%;
+}
+.imageClassWL {
+	position: relative;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	transform-style: preserve-3d;
+}
+.imageClassWL #child {
+	position: absolute;
+	top: -10%;
+
+	transform: translateZ(80px);
+	font-size: 23px;
+}
+.materialWrapper {
+	position: absolute;
+	top: 150px;
+	right: 10%;
+	left: 10%;
+	bottom: 10px;
+}
+.BarrelListContainer{
+	display:flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+#materialList{
+	display:flex;
+	flex-direction: row;
+	align-items: flex-start;
+	
+	gap:9px;
+}
+#materialList p{
+	transform: translateZ(25px); 
+	color: gray;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.btnContainer {
+	display: flex;
+	justify-content: center;
+	width: 30vw;
+	gap: 1em;
+	border-radius: 3%;
+	transform: translateZ(15px);
+	bottom: 5px;
+}
+.btnCard {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	width: 100px;
+	font-family: 'Roboto Condensed', sans-serif;
+	border-radius: 10%;
+	border: none;
+	background-color: #378b29;
+	background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
+
+	color: black;
+	font-size: 15px;
+	margin-bottom: 15px;
+}
+.btnCard:hover {
+	background-color: #7c9070;
+	color: white;
+}
+
+.parent{
+	position: relative;
+    display: flex;
+    height: 325px;
+    width: 526px;
     position: relative;
-    display:flex;
-    flex-direction: row;
-    width:500px;
-    justify-content: center;
-    align-items: center;
-    gap:5em;
-    transform-style: preserve-3d;
-}
-.showInputContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 350px;
-    width: 100%;
-    color:black;
-    transform-style: preserve-3d;
-}
-#updateInputSection{
-    display:flex;
-    flex-direction: column;
-    gap:4px;
-    justify-content:space-evenly;
-    color:black;
-    transform-style: preserve-3d;
-}
-.js-tilt-glare{
-    border-radius: 15%;
-}
-.btnContainer{
-    display:flex;
-    justify-content: center;
-    width:30vw;
-    gap: 1em;
-    border-radius: 3%;
-    transform:translateZ(15px);
-    bottom:5px;
-}
-.btnCard{
-    display:flex;
-    flex-direction: row;
+    z-index: 1;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width:100px;
-    font-family: 'Roboto Condensed', sans-serif; 
-    border-radius: 10%; 
-    border:none;
-    background-color:#FFD3B0;
-    color:black;
-    font-size: 15px;
-    margin-bottom: 15px;
+    background-color: gray;
+    transform-style: preserve-3d;
+    border-radius: 35%;
 }
-.btnCard:hover{
-    background-color:#7C9070;
-    color:white;
+.courtDesign{
+    position: absolute;
+    z-index: 1;
+	transform: translateZ(80px);
+}
+.courtDesign:hover{
+    z-index: 1;
+	transform: translateZ(80px);
+}
+.child{
+        left: 73px;
+    position: absolute;
+    top: 64px;
+    bottom: 69px;
+    right: 324px;
+    z-index: 20;
+    background-color: green;
+    transform: translateZ(60px);
+}
+.child:hover{
+     z-index: 25; 
+     background-color: transparent;
+}
+.child2{
+       position: absolute;
+    top: 65px;
+    bottom: 68px;
+    right: 209px;
+    left: 204px;
+    z-index: 20;
+    background-color:crimson;
+    transform: translateZ(60px);
+}
+.child2:hover{
+    z-index: 25;
+   background-color: transparent;
+}
+.child3{
+    position: absolute;
+    top: 66px;
+    bottom: 68px;
+    right: 75px;
+    left: 323px;
+    z-index: 2o;
+    background-color: green;
+    transform: translateZ(60px);
+
+}
+.child3:hover{
+z-index: 25;
+background-color: transparent
 }

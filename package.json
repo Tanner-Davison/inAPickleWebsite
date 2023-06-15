@@ -5,15 +5,15 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "jquery": "^3.7.0",
+    "main": "/Users/tannerdavison/Desktop/PickledCourts/server/server.js",
     "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
     "tilt.js": "^1.2.1",
-    "yarn": "^1.22.19",
-    "main": "/Users/tannerdavison/Desktop/PickledCourts/server/server.js"
+    "yarn": "^1.22.19"
   },
   "name": "pickledcourts",
   "version": "1.0.0",
   "main": "server/server.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
