@@ -59,23 +59,18 @@ body {
 	transform: translateZ(50px);
 }
 .changeStyle {
-  position: absolute;
-  transform-style: preserve-3d;
-  height: 50px;
-  width: 50px;
-  top: 10px;
-  right:100px;
-  
+   position: absolute;
+   transform-style: preserve-3d;
+   height: 50px;
+   width: 50px;
+   top: 10px;
+   right:100px;
 }
-
 .changeStyle i {
   height: 50px;
   width: 50px;
   font-size:25px; /* Adjust the font size as needed */
- 
-
 }
-
 .changeStyle button {
   display: hidden; /* Corrected the spelling error: "hidden" should be "none" */
   background-color: transparent;
@@ -83,7 +78,6 @@ body {
   height: 50px;
   width: 50px;
 }
-
 #changeStylePhoto{
 	height:100px;
 	width:100px;
@@ -136,32 +130,32 @@ input {
 	height: 700px;
 	width: 100%;
 	overflow-y: scroll;
-	gap: 25px;
+	gap: 100px;
 	padding-bottom: 45px;
 	justify-content: center;
 	transform-style: preserve-3d;
 }
-
-
 .courtCard {
 	position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #f8f9d2;
+	background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
     margin-left: 30px;
     font-family: 'Roboto Condensed', sans-serif;
     border-radius: 30%;
-    border: 24px outset #226d25;
+    border: 24px  #226d25;
+	border-style:outset;
+	border-inline-color: snow;
     height: 77%;
     width: 610px;
     transform-style: preserve-3d;
-    box-shadow: inset 2px 10px 30px black, inset 10px 15px 30px black, inset 8px 3px 30px black, inset -16px -16px 30px black, inset 10px -5px 6px black, inset 8px 3px 5px black;
+    box-shadow: inset 2px 10px 30px white, inset 10px 15px 30px black, inset 4px 3px 30px black, inset -10px -16px 30px black, inset 10px -5px 30px white, inset 4px 5px 30px black;
     color: black;
     z-index: 10;
     top: 20px;
 }
-
 .completeOverlay {
 	position: absolute;
 	display: flex;
@@ -174,7 +168,6 @@ input {
 	background-color: lightgreen;
 	opacity: 75%;
 	border-radius: 28%;
-	
 	transform-style: preserve-3d;
 }
 .completeOverlay p {
@@ -184,7 +177,6 @@ input {
 	opacity: 100%;
 	transform: translateZ(80px);
 }
-
 .courtIMG {
 	height: 200px;
 	width: 400px;
@@ -231,10 +223,10 @@ input {
 	padding-top: 50px;
 	height: 100%;
 	width: 80%;
+	transform-style: preserve-3d;
 }
 .imageClassWL {
 	position: relative;
-	
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -245,9 +237,9 @@ input {
 .imageClassWL #child {
 	position: absolute;
 	top: -10%;
-
 	transform: translateZ(80px);
 	font-size: 23px;
+	z-index: 1;
 }
 .materialWrapper {
 	position: absolute;
@@ -255,36 +247,45 @@ input {
 	right: 10%;
 	left: 10%;
 	bottom: 10px;
+	z-index: 1;
+	transform-style: preserve-3d;
+	padding-top: 3em;
+	padding-bottom: 3em;
 }
 .BarrelListContainer{
 	display:flex;
 	flex-direction: column;
 	align-items: flex-start;
+	justify-content: center;
+	transform-style: preserve-3d;
+	gap:20px;
 }
 #materialList{
 	display:flex;
+	height:20px;
 	flex-direction: row;
-	align-items: flex-start;
-	
+	align-items: center;
 	gap:9px;
+	transform-style: preserve-3d;
+	
 }
 #materialList p{
-	transform: translateZ(25px); 
-	color: gray;
+	color: black;
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
+	font-size:15px;
+	transform: translateZ(70px);
 }
-
 .btnContainer {
 	display: flex;
 	justify-content: center;
 	width: 30vw;
 	gap: 1em;
-	border-radius: 3%;
-	transform: translateZ(15px);
-	bottom: 5px;
+	bottom: 10px;
+	transform: translateZ(20px);
 }
+
 .btnCard {
 	display: flex;
 	flex-direction: row;
@@ -293,27 +294,36 @@ input {
 	height: 40px;
 	width: 100px;
 	font-family: 'Roboto Condensed', sans-serif;
-	border-radius: 10%;
+	border-radius: 15%;
 	border: none;
 	background-color: #378b29;
 	background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
-
 	color: black;
 	font-size: 15px;
-	margin-bottom: 15px;
+	
 }
 .btnCard:hover {
-	background-color: #7c9070;
+	background-color: #0d0f0b !important;
 	color: white;
+	font-size: large;
 }
-
+.materialBtn{
+	position: absolute;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    top: 92%;
+    left: 0%;
+}
 .parent{
 	position: relative;
     display: flex;
     height: 325px;
     width: 526px;
     position: relative;
-    z-index: 1;
+    z-index: -1;
     align-items: center;
     justify-content: center;
     background-color: gray;
@@ -324,23 +334,25 @@ input {
     position: absolute;
     z-index: 1;
 	transform: translateZ(80px);
+	border-radius:35%;
+	 box-shadow: inset 2px 10px 30px black;
 }
 .courtDesign:hover{
     z-index: 1;
-	transform: translateZ(80px);
+	transform: translateZ(50px);
 }
 .child{
-        left: 73px;
+    left: 73px;
     position: absolute;
     top: 64px;
     bottom: 69px;
     right: 324px;
-    z-index: 20;
+    z-index: 50;
     background-color: green;
-    transform: translateZ(60px);
+    transform: translateZ(50px);
 }
 .child:hover{
-     z-index: 25; 
+     z-index: 75; 
      background-color: transparent;
 }
 .child2{
@@ -366,7 +378,6 @@ input {
     z-index: 2o;
     background-color: green;
     transform: translateZ(60px);
-
 }
 .child3:hover{
 z-index: 25;

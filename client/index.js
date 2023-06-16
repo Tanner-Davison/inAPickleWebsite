@@ -6,7 +6,6 @@ const headerContainer = document.querySelector(".headerContainer");
 const courtNameInput = document.getElementById("courtName");
 const lengthInput = document.getElementById("length");
 const widthInput = document.getElementById("width");
-const changeLayout = document.createElement("div");
 let courtObjects = [];
 const baseURL = "http://localhost:4500/api";
 
@@ -15,28 +14,14 @@ $(".youTubeLogo").tilt({
 	scale: 1,
 	maxTilt: 30,
 });
-$(".changeStyle").tilt({
-	maxGlare: 0,
-	scale: 1,
-	maxTilt: 30,
-});
-changeLayout.innerHTML = `
-  <button type="submit">
-    <i class="fas fa-columns" style=" background-color: linear-gradient(147deg, #166d3b 0%, #000000 74%);"></i>
-  </button>
-`;
-
-changeLayout.classList.add("changeStyle");
-displayCourts.appendChild(changeLayout);
 
 const errCallback = (err) => console.log(err);
-
 const deleteCourt = (id) =>
 	axios
 		.delete(`${baseURL}/court/${id}`)
 		.then((res) => {
 			displayCourts.innerHTML = "";
-			displayCourts.appendChild(changeLayout);
+
 			const { data } = res; //same as res.data except now data is the variable name
 			data.forEach((courtObj) => {
 				generateCourtInfo(courtObj);
@@ -49,7 +34,7 @@ const createNewCourt = (body) =>
 		.post(`${baseURL}/court`, body)
 		.then((res) => {
 			displayCourts.innerHTML = "";
-			displayCourts.appendChild(changeLayout);
+
 			res.data.forEach((courtObj) => {
 				generateCourtInfo(courtObj);
 			});
@@ -74,7 +59,6 @@ const getAllCourts = () =>
 			displayCourts.innerHTML = "";
 
 			res.data.forEach((court) => {
-				displayCourts.appendChild(changeLayout);
 				generateCourtInfo(court);
 			});
 		})
@@ -127,16 +111,13 @@ function generateCourtInfo(court) {
 
 	courtInfo.innerHTML = `
 	
-    <h1 style='transform: translateZ(35px);padding-top:1em; font-size:30px;'>${
+    <h1 style='transform: translateZ(20px);padding-top:1em; font-size:37px;'>${
 			court.name
 		}'s Court</h1>
 		<br>
     <div class='imageClassWL'>
-        <div class="parent">
-        <div class="courtDesign"><img src="/photos/pickleballCourt copy.png" alt="thumbnail" height='300' width='500'></div> 
-        <div class="child"></div>
-        <div class="child2"></div>
-        <div class="child3"></div>
+        <img alt="Pickleball Court" id="courtIMG" src="/photos/pickleball.png" width='350'  height='200'style="transform: translateZ(65px);border-radius:15%;">
+		<p id='child'style='color: lightgray;'>
 		${court.width} X ${court.length}
     	</p>
 	</div>
@@ -174,11 +155,7 @@ function generateCourtInfo(court) {
 	} else {
 		return courtInfo;
 	}
-	if (displayCourts.contains(changeLayout)) {
-	} else {
-		displayCourts.appendChild(changeLayout);
-		return courtInfo;
-	}
+
 	return courtInfo;
 }
 
@@ -197,7 +174,6 @@ function showMaterials(courtName, id, length, width) {
 		materialsContainer.classList.add("courtCard");
 		let area = length * width;
 		let PaintWithSand = null;
-
 		let primer = null;
 		let linePaint = null;
 
@@ -219,30 +195,31 @@ function showMaterials(courtName, id, length, width) {
 		}
 
 		materialsContainer.innerHTML = `
-		<p style='display:flex; align-self:center;font-size:20px; '>${courtName}'s Court</p>
-		 <p style='transform: translateZ(25px)'>Total Area: ${area}sq/ft </p>
-		<div class= materialWrapper>
-	  	<div style='display:flex; flex-direction:row; align-items:center; gap:7px; transform: translateZ(45px);'>
-      	<img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='100'  height='100'style="transform: translateZ(65px);border-radius:15%;">
-		  <div class='BarrelListContainer'>
-			<div id='materialList'>
-				  <p>Acrylic Resurfacer: <p style='color:black;font-size:large;'>${acrylicResurfacer}</p> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
+		<h1 style='position:relative;display:flex; align-self:center;transform: translateZ(60px);top:25px;'>${courtName} Material Needs</h1>
+		 <p style='transform: translateZ(25px)'>Total Court Area: ${area}sq/ft </p>
+	<div class= materialWrapper>
+		<div style='display:flex; flex-direction:row; align-items:center; gap:30px;transform-style: preserve-3d;'>
+      	  <img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='200'  height='200'style="transform: translateZ(25px);border-radius:15%;">
+			<div class='BarrelListContainer'>
+				<div id='materialList'>
+				<p>Acrylic Resurfacer: <p style='color:black;font-size:large;'>${acrylicResurfacer}</p> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
 				</div>
-			<div id='materialList'>
-			  <p>Acrylic Paint w/Sand: <p style='color:black;font-size:large;'>${PaintWithSand}</p> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
-			</div>
-			<div id='materialList'>
+				<div id='materialList'>
+			  	<p>Acrylic Paint w/Sand: <p style='color:black;font-size:large;'>${PaintWithSand}</p> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
+				</div>
+				<div id='materialList'>
 				<p>Line Primer:  <p style='color:black;font-size:large;'>${primer}</p> 
-			</div>
-			<div id='materialList'>
+				</div>
+				<div id='materialList'>
 				<p>Line Paint:  <p style='color:black;font-size:large;'>${linePaint}</p> 
+				</div>
 			</div>
 		</div>
-		<img alt="Pickleball Court"  src="/photos/pickleball.png" width='350'  height='200'style="transform: translateZ(65px);border-radius:15%;">
-	</div>
-      
-      <button class="btnCard" onclick="exitMaterials(${id})">Back</button>
-  
+     	 	<div class="materialBtn">
+      			<button class="btnCard"id="exitMaterials" onclick="exitMaterials(${id})">Back</button>
+	  			<button class="btnCard"id="customCourt1" >Custom Court Color's </button>
+	  		</div>
+    		</div>
 	</div>`;
 
 		currentCourtCard.insertAdjacentElement("afterend", materialsContainer);
@@ -253,8 +230,30 @@ function showMaterials(courtName, id, length, width) {
 			maxTilt: 3,
 		});
 	}
+	const customCourtBtn = document.getElementById("customCourt1");
+	
+	
+	customCourtBtn.addEventListener("click", (event) => {
+		event.preventDefault()
+		customCourtColor(id,materialsContainer);
+	});
 }
+ const customCourtColor = (id,currentDisplay) => {
 
+	console.log(currentDisplay)
+	 customCourtCard = currentDisplay;
+	 customCourtCard.id = id;
+	customCourtCard.innerHTML = `
+	   <div class="courtDesign"><img src="/photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'></div> 
+        <div class="parent">
+        <div class="child"></div>
+        <div class="child2"></div>
+        <div class="child3"></div>
+    </div>
+	
+	`;
+	
+};
 function exitMaterials(id) {
 	const materialsContainer = document.getElementById(`materialsContainer`);
 	const currentCourtCard = document.getElementById(`courtCard_${id}`);
@@ -266,7 +265,6 @@ function exitMaterials(id) {
 }
 function changeInputs(id) {
 	const currentForm = document.getElementById(`courtCard_${id}`);
-	displayCourts.removeChild(changeLayout);
 	changeForm = currentForm;
 	changeForm.id = id;
 	changeForm.innerHTML = `
