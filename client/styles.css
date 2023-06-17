@@ -34,6 +34,7 @@ body {
 	position: relative;
 	display: flex;
 	flex-direction: row;
+	height: 100vh;
 	gap: 75px;
 	padding-left: 25px;
 	overflow: hidden;
@@ -317,69 +318,71 @@ input {
     top: 92%;
     left: 0%;
 }
+.colorForm{
+	position: relative;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	border-radius: 35%;
+	
+}
 .parent{
 	position: relative;
-    display: flex;
     height: 325px;
     width: 526px;
-    position: relative;
-    z-index: -1;
+    z-index: 1;
+	display: flex;
     align-items: center;
     justify-content: center;
     background-color: gray;
-    transform-style: preserve-3d;
+   	transform-style: preserve-3d;
     border-radius: 35%;
+	transform: translateZ(50px);
+	top:-59px;
 }
 .courtDesign{
-    position: absolute;
-    z-index: 1;
-	transform: translateZ(80px);
+    position:absolute;
+	top:60px;
+    z-index: 40;
+	pointer-events: none;
 	border-radius:35%;
-	 box-shadow: inset 2px 10px 30px black;
+	
+	
 }
-.courtDesign:hover{
-    z-index: 1;
-	transform: translateZ(50px);
-}
+
 .child{
-    left: 73px;
     position: absolute;
+    left: 73px;
     top: 64px;
     bottom: 69px;
-    right: 324px;
-    z-index: 50;
+    right: 75px;
+    z-index: 14;
     background-color: green;
-    transform: translateZ(50px);
 }
-.child:hover{
-     z-index: 75; 
-     background-color: transparent;
+#childBtn{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top:0px;
+	left:0px;
+	border-style: none;
+}
+#childBtn:hover{
+     background-color: greenyellow;
 }
 .child2{
        position: absolute;
-    top: 65px;
-    bottom: 68px;
+    top: 64px;
+    bottom: 69px;
     right: 209px;
     left: 204px;
-    z-index: 20;
+    z-index: 15;
     background-color:crimson;
-    transform: translateZ(60px);
+    
 }
-.child2:hover{
-    z-index: 25;
-   background-color: transparent;
-}
-.child3{
-    position: absolute;
-    top: 66px;
-    bottom: 68px;
-    right: 75px;
-    left: 323px;
-    z-index: 2o;
-    background-color: green;
-    transform: translateZ(60px);
-}
-.child3:hover{
-z-index: 25;
-background-color: transparent
+
+#child2Btn:hover{
+   background-color:red ;
 }

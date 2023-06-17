@@ -243,15 +243,25 @@ function showMaterials(courtName, id, length, width) {
 	console.log(currentDisplay)
 	 customCourtCard = currentDisplay;
 	 customCourtCard.id = id;
-	customCourtCard.innerHTML = `
-	   <div class="courtDesign"><img src="/photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'></div> 
+	 customCourtCard.innerHTML = `
+	<form class= colorForm>
+	  
         <div class="parent">
-        <div class="child"></div>
-        <div class="child2"></div>
-        <div class="child3"></div>
+        <div class="child">
+			<button class="child"id='childBtn'></button>
+		</div>
+        <div class="child2">
+			<button class="child2"id='childBtn'></button>
+		</div>
+		
     </div>
-	
+		 <div class="courtDesign">
+		<img class='imgGridBox'src="/photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'>
+	</div> 
+		</form>
 	`;
+	 
+;
 	
 };
 function exitMaterials(id) {
