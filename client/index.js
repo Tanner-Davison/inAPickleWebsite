@@ -231,38 +231,72 @@ function showMaterials(courtName, id, length, width) {
 		});
 	}
 	const customCourtBtn = document.getElementById("customCourt1");
-	
-	
+
 	customCourtBtn.addEventListener("click", (event) => {
-		event.preventDefault()
-		customCourtColor(id,materialsContainer);
+		event.preventDefault();
+		customCourtColor(id, materialsContainer);
 	});
 }
- const customCourtColor = (id,currentDisplay) => {
-
-	console.log(currentDisplay)
-	 customCourtCard = currentDisplay;
-	 customCourtCard.id = id;
-	 customCourtCard.innerHTML = `
+const customCourtColor = (id, currentDisplay) => {
+	console.log(currentDisplay);
+	customCourtCard = currentDisplay;
+	customCourtCard.id = id;
+	
+	customCourtCard.innerHTML = `
 	<form class= colorForm>
-	  
         <div class="parent">
+			<button class='childP' id='parentBtn' onclick="colorWheel(${id},'parentBtn')"></button>
         <div class="child">
-			<button class="child"id='childBtn'></button>
+			<button class="child"id='childBtn'onclick="colorWheel(${id},'childBtn')"></button>
 		</div>
         <div class="child2">
-			<button class="child2"id='childBtn'></button>
+			<button class="child2"id='childBtn2'onclick="colorWheel(${id},'childBtn2')"></button>
 		</div>
-		
     </div>
+	<div id="dropdown_${id}" class="dropdown-content">
+    <a  class="color-option" style='color:#00562f;' onclick="colorChanger(${id},'#00562f','parent')">Light Green</a>
+    <a  class="color-option"style='color:#1b4d2d;' onclick="colorChanger(${id},'#1b4d2d','parent')">Forest Green</a>
+      <a  class="color-option"style='color:#375748;' onclick="colorChanger(${id},'#375748','parent')">Dark Green</a>
+	   <a  class="color-option"style='color:#614f43;' onclick="colorChanger(${id},'#614f43','parent')">Beige</a>
+	     <a  class="color-option"style='color:#382728;' onclick="colorChanger(${id},'#382728','parent')">Brown</a>
+	       <a  class="color-option"style='color:#73292f;' onclick="colorChanger(${id},'#73292f','parent')">Red</a>
+	        <a  class="color-option"style='color:#bd9f6f;' onclick="colorChanger(${id},'#bd9f6f','parent')">SandStone</a>
+		     <a  class="color-option"style='color:#4e131e;' onclick="colorChanger(${id},'#4e131e','parent')">Maroon</a>
+		      <a  class="color-option"style='color:#1c1b57;' onclick="colorChanger(${id},'#1c1b57','parent')">Tournament Purple</a>
+		     <a  class="color-option"style='color:#5b5d62;' onclick="colorChanger(${id},'#5b5d62','parent')">Gray</a>
+		    <a  class="color-option"style='color:#002f54;' onclick="colorChanger(${id},'#002f54','parent')">Blue</a>
+		   <a  class="color-option"style='color:#00517f;' onclick="colorChanger(${id},'#00517f','parent')">Light Blue</a>
+		  <a  class="color-option"style='color:#8d9198;' onclick="colorChanger(${id},'#8d9198','parent')">Dove Gray</a>
+         <a  class="color-option"style='color:#49c7ed;' onclick="colorChanger(${id},'#49c7ed','parent')">Icy Blue</a>
+        <a  class="color-option"style='color:#ffca6e;' onclick="colorChanger(${id},'#ffca6e','parent')">Yellow</a>
+       <a  class="color-option"style='color:#e35e44;' onclick="colorChanger(${id},'#e35e44','parent')">Orange</a>
+      <a  class="color-option"style='color:#c71823;' onclick="colorChanger(${id},'#c71823','parent')">Bright Red</a>
+    <a  class="color-option"style='color:#000000;' onclick="colorChanger(${id},'#000000','parent')">Black</a>
+   
+
+</div>
 		 <div class="courtDesign">
 		<img class='imgGridBox'src="/photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'>
 	</div> 
 		</form>
 	`;
-	 
-;
 	
+$(".dropdown-content").tilt({
+	maxGlare: 0,
+	scale: 1,
+	maxTilt: 10,
+});
+	colorWheel = (id, parents) => {
+		const dropdown = document.getElementById(`dropdown_${id}`);
+		dropdown.style.display =
+			dropdown.style.display === "block" ? "none" : "block";
+		colorChanger = (id, color, parent) => {
+			const targetElement = document.getElementById(`${parents}`);
+			targetElement.style.backgroundColor = color;
+		};
+	};
+	let colorOptions = document.getElementsByClassName("color-option");
+	console.log(colorOptions);
 };
 function exitMaterials(id) {
 	const materialsContainer = document.getElementById(`materialsContainer`);
