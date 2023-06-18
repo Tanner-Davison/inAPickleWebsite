@@ -241,16 +241,16 @@ const customCourtColor = (id, currentDisplay) => {
 	console.log(currentDisplay);
 	customCourtCard = currentDisplay;
 	customCourtCard.id = id;
-	
+
 	customCourtCard.innerHTML = `
 	<form class= colorForm>
         <div class="parent">
-			<button class='childP' id='parentBtn' onclick="colorWheel(${id},'parentBtn')"></button>
+			<button type='button'class='childP' id='parentBtn' onclick="colorWheel(${id},'parentBtn')"></button>
         <div class="child">
-			<button class="child"id='childBtn'onclick="colorWheel(${id},'childBtn')"></button>
+			<button type='button'class="child"id='childBtn'onclick="colorWheel(${id},'childBtn')"></button>
 		</div>
         <div class="child2">
-			<button class="child2"id='childBtn2'onclick="colorWheel(${id},'childBtn2')"></button>
+			<button type='button'class="child2"id='childBtn2'onclick="colorWheel(${id},'childBtn2')"></button>
 		</div>
     </div>
 	<div id="dropdown_${id}" class="dropdown-content">
@@ -280,12 +280,12 @@ const customCourtColor = (id, currentDisplay) => {
 	</div> 
 		</form>
 	`;
-	
-$(".dropdown-content").tilt({
-	maxGlare: 0,
-	scale: 1,
-	maxTilt: 10,
-});
+
+	$(".dropdown-content").tilt({
+		maxGlare: 0,
+		scale: 1,
+		maxTilt: 10,
+	});
 	colorWheel = (id, parents) => {
 		const dropdown = document.getElementById(`dropdown_${id}`);
 		dropdown.style.display =
