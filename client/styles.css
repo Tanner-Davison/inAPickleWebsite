@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	height: 100vh;
 	background-color: black;
+	overflow-x:hidden;
 }
 .headerContainer {
 	position: relative;
@@ -15,6 +16,7 @@ body {
 	color: white;
 	background-color: #166d3b;
 	background-image: linear-gradient(147deg, #166d3b 0%, #000000 90%);
+	
 }
 #formId {
 	position: relative;
@@ -26,6 +28,8 @@ body {
 	font-size: larger;
 	font-family: 'Roboto Condensed', sans-serif;
 	top:-15px;
+	
+	
 }
 #formId select {
 	font-size: large;
@@ -35,6 +39,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	height: 100vh;
+	width:100%;
 	gap: 75px;
 	padding-left: 25px;
 	overflow: hidden;
@@ -135,6 +140,7 @@ input {
 	padding-bottom: 45px;
 	justify-content: center;
 	transform-style: preserve-3d;
+	
 }
 .courtCard {
 	position: relative;
@@ -156,6 +162,8 @@ input {
     color: black;
     z-index: 10;
     top: 20px;
+	transition: height width ease-in-out 350ms;
+	
 }
 .completeOverlay {
 	position: absolute;
@@ -170,7 +178,9 @@ input {
 	opacity: 75%;
 	border-radius: 28%;
 	transform-style: preserve-3d;
+	
 }
+
 .completeOverlay p {
 	position: absolute;
 	font-size: 230px;
@@ -184,6 +194,7 @@ input {
 	transform: translateZ(30px);
 	border-radius: 25%;
 	overscroll-behavior-y: contain;
+	
 }
 .wrapperUpdateContainer {
 	position: relative;
@@ -194,6 +205,8 @@ input {
 	align-items: center;
 	gap: 5em;
 	transform-style: preserve-3d;
+	
+	
 }
 .showInputContainer {
 	display: flex;
@@ -204,6 +217,8 @@ input {
     width: 65%;
     color: black;
     transform-style: preserve-3d;
+	transition: height ease-in 450ms ;
+
 }
 #updateInputSection {
 	display: flex;
@@ -212,6 +227,7 @@ input {
 	justify-content: space-evenly;
 	color: black;
 	transform-style: preserve-3d;
+	
 }
 .js-tilt-glare {
 	border-radius: 15%;
@@ -223,8 +239,9 @@ input {
 	align-items: center;
 	padding-top: 50px;
 	height: 100%;
-	width: 80%;
+	width: 75%;
 	transform-style: preserve-3d;
+	
 }
 .imageClassWL {
 	position: relative;
@@ -244,30 +261,55 @@ input {
 }
 .materialWrapper {
 	position: absolute;
-	top: 150px;
-	right: 10%;
-	left: 10%;
-	bottom: 10px;
-	z-index: 1;
-	transform-style: preserve-3d;
-	padding-top: 3em;
-	padding-bottom: 3em;
+    top: 150px;
+    right: 6%;
+    left: 10%;
+    bottom: 10px;
+    z-index: 1;
+    transform-style: preserve-3d;
+    padding-bottom: 3em;
+
+	
+}
+.matCardStyle{
+display:flex; 
+position: relative;
+flex-direction:row; 
+align-items:center; 
+transform-style: preserve-3d;
+background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+top:0px;
+bottom:0px;
+right:px;
+left:0px;
+border-radius: 35%;
+
 }
 .BarrelListContainer{
 	display:flex;
+	position: relative;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
 	transform-style: preserve-3d;
-	gap:20px;
+	left: 100px;
+	right:-100px;
+	gap:30px;
+	
 }
+
 #materialList{
 	display:flex;
 	height:20px;
 	flex-direction: row;
 	align-items: center;
-	gap:9px;
+	gap:20px;
 	transform-style: preserve-3d;
+}
+
+
+#materialList:hover{
+	background-color: lightgreen;
 	
 }
 #materialList p{
@@ -276,7 +318,12 @@ input {
 	align-items: flex-start;
 	justify-content: flex-start;
 	font-size:15px;
-	transform: translateZ(70px);
+	
+}
+
+.measurementsStyle{
+	color:#838996;
+	font-size:large;
 }
 .btnContainer {
 	display: flex;
@@ -344,6 +391,7 @@ input {
     border-radius: 20%;
 	transform: translateZ(30px);
 	top:-59px;
+	
 }
 #parentBtn{
 	position: absolute;
@@ -380,7 +428,6 @@ input {
     right: 70px;
     z-index: 14;
     background-color:#3457D5;
-	
 }
 
 #childBtn{
@@ -437,6 +484,7 @@ input {
     overscroll-behavior: contain;
 	border-top:10px solid red;
     border: 4px inset greenyellow;
+	
     }
 
     .dropdown-content a {

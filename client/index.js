@@ -6,6 +6,7 @@ const headerContainer = document.querySelector(".headerContainer");
 const courtNameInput = document.getElementById("courtName");
 const lengthInput = document.getElementById("length");
 const widthInput = document.getElementById("width");
+let numColors = document.getElementById('color')
 let courtObjects = [];
 const baseURL = "http://localhost:4500/api";
 
@@ -65,22 +66,24 @@ const getAllCourts = () =>
 		.catch(errCallback);
 
 class Court {
-	constructor(name, length, width, area) {
+	constructor(name, length, width, area,colors) {
 		this.name = name;
 		this.length = length;
 		this.width = width;
 		this.area = area;
+		this.colors = colors
 	}
 }
 
 function onClick(e) {
 	e.preventDefault();
-
+	let colors = numColors.value;
 	const courtName = courtNameInput.value;
 	let courtNameUpperCased =
 		courtName.charAt(0).toUpperCase() + courtName.slice(1);
 	let length = lengthInput.value;
 	let width = widthInput.value;
+	console.log(numColors.value)
 	let courtArea = lengthInput.value * widthInput.value;
 	if (courtNameUpperCased === "") {
 		courtNameUpperCased = "No Name";
@@ -89,7 +92,7 @@ function onClick(e) {
 		courtNameUpperCased === "" ? "No Name" : courtNameUpperCased;
 	length = length === "" ? 0 : length;
 	width = width === "" ? 0 : width;
-	const courtObj = new Court(courtNameUpperCased, length, width, courtArea);
+	const courtObj = new Court(courtNameUpperCased, length, width, courtArea,colors);
 
 	if ((headerContainer.classList = "newClass")) {
 		headerContainer.classList.remove("headerContainer");
@@ -100,6 +103,7 @@ function onClick(e) {
 }
 
 function generateCourtInfo(court) {
+	console.log(court.colors)
 	let courtInfo = document.createElement("div");
 	courtInfo.classList.add("courtCard");
 	courtInfo.id = `courtCard_${court.id}`;
@@ -125,7 +129,7 @@ function generateCourtInfo(court) {
       <u>Total Area:</u>
       <p style='color:red'>${court.area} FT</p>
     </div>
-    <p>Court # ${court.id - 1}</p>
+    <p>Court # ${court.id - 1} ${court.colors}</p>
     <div class='btnContainer' >
       <button class='btnCard'id='updateCourtBtn' onClick='changeInputs(${
 				court.id
@@ -170,48 +174,98 @@ function showMaterials(courtName, id, length, width) {
 	if (currentCourtCard) {
 		currentCourtCard.style.display = "none";
 		const materialsContainer = document.createElement("div");
+		let color = document.querySelector('#color-option')
+		console.log(color)
 		materialsContainer.id = `materialsContainer`;
 		materialsContainer.classList.add("courtCard");
 		let area = length * width;
 		let PaintWithSand = null;
 		let primer = null;
 		let linePaint = null;
+		let adhesion = null;
+		let seventyThirty = null;
+		let fourtyTen = null;
+		let acid = null;
+		let patchBinder = null;
+		let paper = null;
+		let sportWax = null;
 
 		if (area <= 880) {
 			acrylicResurfacer = "15-Gallons"; //if area is 880 sqft (just pickleball internal no outside)
 			PaintWithSand = "15-20 Gallons";
 			primer = "1-Gallon";
 			linePaint = "1-Gallon";
+			adhesion = "5 Gallons";
 		} else if (area <= 1800) {
-			acrylicResurfacer = "20-25 Gallons"; // If area is less than or equal to 1800 square feet
-			PaintWithSand = "40-45 Gallons";
-			primer = "1-Gallon";
-			linePaint = "1-Gallon";
+			acrylicResurfacer = "40-60 Gallons"; // If area is less than or equal to 1800 square feet
+			PaintWithSand = "40-45 Gallons"; // used
+			primer = "1-Gallon"; //used
+			adhesion = "5-Gallons"; //used
+			linePaint = "1-Gallon"; //used
+			patchBinder = "5 Gallons"; //used
+			fourtyTen = "8 bags"; //used
+			seventyThirty = "4 bags"; //used
+			paper = "2-3 rolls of paper"; //used
+			acid = "4-Gallons"; //used
+			sportWax = "5-Gallons"; //used
 		} else if (area <= 7200) {
 			acrylicResurfacer = "170-180 Gallons";
 			PaintWithSand = "45 Gallons"; // If area is less than or equal to 7200 square feet
+			primer = "2- Gallons";
+			linePaint = "2-Gallons";
+			patchBinder = "10-Gallons ";
+			fourtyTen = "44 bags *(12 bags for color)";
+			paper = "5-6 rolls of paper (depending on court)";
 		} else {
 			acrylicResurfacer = 0; // For any other area size
 		}
 
 		materialsContainer.innerHTML = `
-		<h1 style='position:relative;display:flex; align-self:center;transform: translateZ(60px);top:25px;'>${courtName} Material Needs</h1>
-		 <p style='transform: translateZ(25px)'>Total Court Area: ${area}sq/ft </p>
+		<h1 style='position:relative;display:flex; align-self:center;transform: translateZ(60px);top:35px;'>${courtName} Material Needs</h1>
+		<div style='    position: absolute;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 13px;top: 230px;left: 179px;color: black;z-index: 50;font-size: 13px;'>
+				<em>
+					<p>Numbers based on</p>
+				</em>
+				<em>
+				<p style='transform: translateZ(25px)'>Total Court Area: ${area}sq/ft </p>
+			</em>
+	</div>
 	<div class= materialWrapper>
-		<div style='display:flex; flex-direction:row; align-items:center; gap:30px;transform-style: preserve-3d;'>
-      	  <img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='200'  height='200'style="transform: translateZ(25px);border-radius:15%;">
+		<div class='matCardStyle'>
+      	  <img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='200'  height='200'style="    transform: translateZ(100px);border-radius: 15%;mix-blend-mode: darken;position: relative;left: 10%;">
 			<div class='BarrelListContainer'>
 				<div id='materialList'>
-				<p>Acrylic Resurfacer: <p style='color:black;font-size:large;'>${acrylicResurfacer}</p> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
+				<p>Acrylic Resurfacer: <h6 class='measurementsStyle'>${acrylicResurfacer}</h6> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
 				</div>
 				<div id='materialList'>
-			  	<p>Acrylic Paint w/Sand: <p style='color:black;font-size:large;'>${PaintWithSand}</p> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
+			  	<p>Acrylic PickleMaster: <h6 class='measurementsStyle'>${PaintWithSand}</h6> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
+			</div>
+				<div id='materialList'>
+				<p>Patch Binder:  <h6 class='measurementsStyle'>${patchBinder}</h6><p style='color:gray;font-size:small;'>(*may use more given court condition) </p>
 				</div>
 				<div id='materialList'>
-				<p>Line Primer:  <p style='color:black;font-size:large;'>${primer}</p> 
+				<p>Adhesion Promoter:  <h6 class='measurementsStyle'>${adhesion}</h6> 
+				</div>
+			<div id='materialList'>
+				<p>Line Primer:  <h6 class='measurementsStyle'>${primer}</h6> 
 				</div>
 				<div id='materialList'>
-				<p>Line Paint:  <p style='color:black;font-size:large;'>${linePaint}</p> 
+				<p>Line Paint:  <h6 class='measurementsStyle'>${linePaint}</h6> 
+				</div>
+				<div id='materialList'>
+				<p>Sand 40/10: <h6 class='measurementsStyle'>${fourtyTen}</h6> 
+				</div>
+				<div id='materialList'>
+				<p>Sand 70/30: <h6 class='measurementsStyle'>${seventyThirty}</h6> <p style='color:gray;font-size:small;'>(2 per/ half keg)</p>
+				</div>
+				<div id='materialList'>
+				<p>Paper Rolls: <h6 class='measurementsStyle'>${paper}</h6> 
+				</div>
+				<div id='materialList'>
+				<p>Acid-wash: <h6 class='measurementsStyle'>${acid}</h6> 
+				</div>
+				<div id='materialList'>
+				<p>Sport-Wax <h6 class='measurementsStyle'>${sportWax}</h6> 
 				</div>
 			</div>
 		</div>
@@ -238,7 +292,7 @@ function showMaterials(courtName, id, length, width) {
 	});
 }
 const customCourtColor = (id, currentDisplay) => {
-	console.log(currentDisplay);
+	
 	customCourtCard = currentDisplay;
 	customCourtCard.id = id;
 
@@ -290,7 +344,9 @@ const customCourtColor = (id, currentDisplay) => {
 		const dropdown = document.getElementById(`dropdown_${id}`);
 		dropdown.style.display =
 			dropdown.style.display === "block" ? "none" : "block";
-		colorChanger = (id, color, parent) => {
+		colorChanger = (id, color) => {
+			console.log(parents);
+			console.log(id);
 			const targetElement = document.getElementById(`${parents}`);
 			targetElement.style.backgroundColor = color;
 		};
