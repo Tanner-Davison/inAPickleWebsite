@@ -9,6 +9,7 @@ const widthInput = document.getElementById("width");
 let numColors = document.getElementById('color')
 let courtObjects = [];
 const baseURL = "http://localhost:4500/api";
+const selectedColors = [];
 
 $(".youTubeLogo").tilt({
 	maxGlare: 0,
@@ -76,6 +77,7 @@ class Court {
 }
 
 function onClick(e) {
+	console.log(selectedColors);
 	e.preventDefault();
 	let colors = numColors.value;
 	const courtName = courtNameInput.value;
@@ -292,19 +294,18 @@ function showMaterials(courtName, id, length, width) {
 	});
 }
 const customCourtColor = (id, currentDisplay) => {
-	
 	customCourtCard = currentDisplay;
-	customCourtCard.id = id;
-
+	customCourtCard.id = `customCourtCard_${id}`;
+	
 	customCourtCard.innerHTML = `
 	<form class= colorForm>
         <div class="parent">
-			<button type='button'class='childP' id='parentBtn' onclick="colorWheel(${id},'parentBtn')"></button>
+			<button type='button'class='childP' id='parentBtn' onclick="colorWheel(${id},'parentBtn','parent')"></button>
         <div class="child">
-			<button type='button'class="child"id='childBtn'onclick="colorWheel(${id},'childBtn')"></button>
+			<button type='button'class="childs"id='childBtn'onclick="colorWheel(${id},'childBtn','child')"></button>
 		</div>
         <div class="child2">
-			<button type='button'class="child2"id='childBtn2'onclick="colorWheel(${id},'childBtn2')"></button>
+			<button type='button'class="child2s"id='childBtn2'onclick="colorWheel(${id},'childBtn2','child2')"></button>
 		</div>
     </div>
 	<div id="dropdown_${id}" class="dropdown-content">
@@ -332,36 +333,87 @@ const customCourtColor = (id, currentDisplay) => {
 		 <div class="courtDesign">
 		<img class='imgGridBox'src="/photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'>
 	</div> 
-		</form>
+</form>
+<div class='colorBtnContainer'>
+<button class="btnCard"id="exitMaterials" onclick="exitMaterials(${id})">Home</button>
+<button class="btnCard" id="saveColors" type='submit' onclick="saveColorFunc(${id})">Save</button>
+</div>
 	`;
-
+	let outerBorder = document.querySelector('.childP')
+	console.log(outerBorder)
+	let courtArea = document.querySelector('.childs')
+	let kitchen = document.querySelector('.child2s')
+console.log(kitchen)
+	let thisHome = document.getElementById(`courtCard_${id}`);
+	const hasId = selectedColors.findIndex((item) => item.id == thisHome);
+	
+	if (hasId !== -1) {
+		num = hasId;
+		outerBorder.style.backgroundColor = selectedColors[num].colorOuter;
+		courtArea.style.backGroundColor = selectedColors[num].colorCourt;
+		kitchen.style.backGroundColor = selectedColors[num].colorKitchen;
+	}
+	console.log(hasId.color);
 	$(".dropdown-content").tilt({
 		maxGlare: 0,
 		scale: 1,
 		maxTilt: 10,
 	});
-	colorWheel = (id, parents) => {
-		const dropdown = document.getElementById(`dropdown_${id}`);
-		dropdown.style.display =
-			dropdown.style.display === "block" ? "none" : "block";
+	colorWheel = (id, parents,target) => {
+			const dropdown = document.getElementById(`dropdown_${id}`);
+			dropdown.style.display =
+				dropdown.style.display === "block" ? "none" : "block";
+		const targetElement = document.getElementById(`customCourtCard_${id}`).querySelector(`#${parents}`);
 		colorChanger = (id, color) => {
-			console.log(parents);
-			console.log(id);
-			const targetElement = document.getElementById(`${parents}`);
+			console.log(target)
+			
 			targetElement.style.backgroundColor = color;
+			console.log(target);
 		};
 	};
-	let colorOptions = document.getElementsByClassName("color-option");
-	console.log(colorOptions);
+	saveColorFunc = (id) => {
+		let thisHome = document.getElementById(`courtCard_${id}`)
+		let parentBtn = document.getElementById('parentBtn')
+		let childBtn = document.getElementById('childBtn')
+		let childBtn2 = document.getElementById('childBtn2')
+
+		parentBtn.textContent = parentBtn.style.backgroundColor;
+		let parent = parentBtn.textContent
+
+		childBtn.textContent = childBtn.style.backgroundColor;
+		let child = childBtn.textContent;
+
+		childBtn2.textContent = childBtn2.style.backgroundColor;
+		let child2 = childBtn2.textContent;
+
+		
+		
+		 const existingColorIndex = selectedColors.findIndex(
+				(item) => item.id === thisHome
+			);
+			if (existingColorIndex !== -1) {
+				selectedColors[existingColorIndex].colorOuter = parent;
+				selectedColors[existingColorIndex].colorCourt = child;
+				selectedColors[existingColorIndex].colorKitchen = child2;
+			} else {
+				selectedColors.push({ colorOuter: parent,colorCourt: child,colorKitchen: child2, id: thisHome });
+			}
+		console.log(selectedColors)
+	};
 };
 function exitMaterials(id) {
 	const materialsContainer = document.getElementById(`materialsContainer`);
 	const currentCourtCard = document.getElementById(`courtCard_${id}`);
-	if (materialsContainer && currentCourtCard) {
-		materialsContainer.remove();
+	const customCourtCard = document.getElementById(`customCourtCard_${id}`)
+	if (customCourtCard && currentCourtCard) {
+		customCourtCard.remove();
 		currentCourtCard.style.display = "flex";
 		currentCourtCard.classList.add("courtCard");
-	}
+	}else if (materialsContainer && currentCourtCard) {
+			materialsContainer.remove();
+			currentCourtCard.style.display = "flex";
+			currentCourtCard.classList.add("courtCard");
+	} 
 }
 function changeInputs(id) {
 	const currentForm = document.getElementById(`courtCard_${id}`);

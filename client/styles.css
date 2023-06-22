@@ -165,6 +165,7 @@ input {
 	transition: height width ease-in-out 350ms;
 	
 }
+
 .completeOverlay {
 	position: absolute;
 	display: flex;
@@ -398,6 +399,7 @@ border-radius: 35%;
 	z-index: 14;
 	top:0px;
 	border-radius: 25%;
+	color:transparent;
 }
 #parentBtn:hover{
 	background-color: darkgreen;
@@ -427,7 +429,7 @@ border-radius: 35%;
     bottom: 64px;
     right: 70px;
     z-index: 14;
-    background-color:#3457D5;
+	color:transparent;
 }
 
 #childBtn{
@@ -437,6 +439,8 @@ border-radius: 35%;
 	top:0px;
 	left:0px;
 	border-style: none;
+	color:transparent;
+	background-color: #3457D5;
 }
 
 #childBtn:hover{
@@ -451,7 +455,7 @@ border-radius: 35%;
     right: 207px;
     left: 204px;
     z-index: 15;
-    background-color:#89CFF0;
+    
 }
 #childBtn2{
 	position: absolute;
@@ -460,6 +464,8 @@ border-radius: 35%;
 	left:0px;
 	right:0px;
 	border-style:none;
+	color:transparent;
+	background-color:#89CFF0;
 }
 #childBtn2:hover{
    background-color:#00CED1;
@@ -495,4 +501,13 @@ border-radius: 35%;
     }
 	.dropdown-content a:hover{
 		background-color: gray;
+	
+}
+	
+	.colorBtnContainer{
+		display:flex;
+		position: absolute;
+		bottom:0px;
+		gap:20px;
 	}
+	
