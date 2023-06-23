@@ -240,9 +240,7 @@ input {
 	align-items: center;
 	padding-top: 50px;
 	height: 100%;
-	width: 75%;
-	transform-style: preserve-3d;
-	
+	width: 80%;
 }
 .imageClassWL {
 	position: relative;
@@ -262,15 +260,13 @@ input {
 }
 .materialWrapper {
 	position: absolute;
-    top: 150px;
+    top: 120px;
     right: 6%;
     left: 10%;
     bottom: 10px;
     z-index: 1;
     transform-style: preserve-3d;
     padding-bottom: 3em;
-
-	
 }
 .matCardStyle{
 display:flex; 
@@ -281,45 +277,77 @@ transform-style: preserve-3d;
 background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
 top:0px;
 bottom:0px;
-right:px;
 left:0px;
 border-radius: 35%;
 
 }
+#barrelImg{
+	display: flex;
+    transform: translateZ(100px);
+    border-radius: 15%;
+    mix-blend-mode: darken;
+    position: absolute !important;
+    top: 32%;
+    left: 104px;
+	
+}
 .BarrelListContainer{
-	display:flex;
-	position: relative;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	transform-style: preserve-3d;
-	left: 100px;
-	right:-100px;
-	gap:30px;
+	display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    transform-style: preserve-3d;
+    left: 126px;
+    right: -100px;
+    top: -55px;
+    padding: 5px;
 	
 }
 
 #materialList{
-	display:flex;
-	height:20px;
-	flex-direction: row;
-	align-items: center;
-	gap:20px;
-	transform-style: preserve-3d;
+	position: relative;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+	justify-content: flex-start;
+	left:40%;
+    gap: 20px;
+    transform-style: preserve-3d;
+    height: 50px;
+    width: 428px;
 }
-
 
 #materialList:hover{
-	background-color: lightgreen;
-	
+	cursor:none;
+	border: 5px outset snow;
+	border-radius: 7%;
+	gap:12px;
+  	background: #ece9e6; 
+  	background: -webkit-linear-gradient(to right, #ece9e6, #ffffff); 
+  	background: linear-gradient(to right, #ece9e6, #ffffff); 
+
 }
+#materialList:hover p {
+font-weight: bolder;
+font-size: larger;
+}
+#materialList:hover h6{
+	border: 3px outset lightblue;
+	border-radius: 5%;
+	border-spacing: 15%;
+	font-weight: bolder;
+	font-size:x-large;
+	background-color: blue;
+	color:snow;
+}
+
 #materialList p{
 	color: black;
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
 	font-size:15px;
-	
 }
 
 .measurementsStyle{
@@ -332,10 +360,11 @@ border-radius: 35%;
 	width: 30vw;
 	gap: 1em;
 	bottom: 10px;
-	transform: translateZ(20px);
+	
 }
 
 .btnCard {
+	
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -349,12 +378,15 @@ border-radius: 35%;
 	background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
 	color: black;
 	font-size: 15px;
+
 	
 }
 .btnCard:hover {
-	background-color: #0d0f0b !important;
-	color: white;
-	font-size: large;
+	color: darkolivegreen;
+	border:5px groove snow;
+	height:45px;
+	background-color: #2dce3f ;
+	background-image:none ;
 }
 .materialBtn{
 	position: absolute;
@@ -367,13 +399,15 @@ border-radius: 35%;
     left: 0%;
 }
 .colorForm{
-	position: relative;
-	display:flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	width: 100%;
-	border-radius: 35%;
+position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72%;
+    width: 100%;
+    bottom: 54px;
+    top: 83px;
+    border-radius: 35%;
 }
 .colorHeader{
 	display:flex;
@@ -415,11 +449,11 @@ border-radius: 35%;
 }
 
 .courtDesign{
-    position:absolute;
-	top:60px;
+   position: absolute;
+    top: -15px;
     z-index: 20;
-	pointer-events: none;
-	border-radius:35%;
+    pointer-events: none;
+    border-radius: 35%;
 }
 
 .child{
@@ -431,7 +465,9 @@ border-radius: 35%;
     z-index: 14;
 	color:transparent;
 }
-
+.childs{
+	background-color: red;
+}
 #childBtn{
 	position: absolute;
 	height: 100%;
@@ -472,11 +508,11 @@ border-radius: 35%;
    border:4px solid yellow;
 }
    .dropdown-content {
-	height: 300px;
+	height: 200px;
     position: absolute;
-	display:none;
+    display: none;
     left: 612px;
-    top: 116px;
+    top: 9px;
     background-color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -488,9 +524,8 @@ border-radius: 35%;
     border-top-left-radius: 9%;
     border-bottom-left-radius: 9%;
     overscroll-behavior: contain;
-	border-top:10px solid red;
-    border: 4px inset greenyellow;
-	
+    border-top: 10px solid red;
+    border: 4px inset limegreen;
     }
 
     .dropdown-content a {
@@ -501,9 +536,10 @@ border-radius: 35%;
     }
 	.dropdown-content a:hover{
 		background-color: gray;
-	
 }
-	
+	.dropdown-content:hover{
+		height:300px;
+	}
 	.colorBtnContainer{
 		display:flex;
 		position: absolute;

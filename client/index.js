@@ -6,10 +6,12 @@ const headerContainer = document.querySelector(".headerContainer");
 const courtNameInput = document.getElementById("courtName");
 const lengthInput = document.getElementById("length");
 const widthInput = document.getElementById("width");
-let numColors = document.getElementById('color')
+let numColors = document.getElementById("color");
 let courtObjects = [];
 const baseURL = "http://localhost:4500/api";
 const selectedColors = [];
+
+
 
 $(".youTubeLogo").tilt({
 	maxGlare: 0,
@@ -67,12 +69,12 @@ const getAllCourts = () =>
 		.catch(errCallback);
 
 class Court {
-	constructor(name, length, width, area,colors) {
+	constructor(name, length, width, area, colors) {
 		this.name = name;
 		this.length = length;
 		this.width = width;
 		this.area = area;
-		this.colors = colors
+		this.colors = colors;
 	}
 }
 
@@ -85,7 +87,7 @@ function onClick(e) {
 		courtName.charAt(0).toUpperCase() + courtName.slice(1);
 	let length = lengthInput.value;
 	let width = widthInput.value;
-	console.log(numColors.value)
+	console.log(numColors.value);
 	let courtArea = lengthInput.value * widthInput.value;
 	if (courtNameUpperCased === "") {
 		courtNameUpperCased = "No Name";
@@ -94,7 +96,13 @@ function onClick(e) {
 		courtNameUpperCased === "" ? "No Name" : courtNameUpperCased;
 	length = length === "" ? 0 : length;
 	width = width === "" ? 0 : width;
-	const courtObj = new Court(courtNameUpperCased, length, width, courtArea,colors);
+	const courtObj = new Court(
+		courtNameUpperCased,
+		length,
+		width,
+		courtArea,
+		colors
+	);
 
 	if ((headerContainer.classList = "newClass")) {
 		headerContainer.classList.remove("headerContainer");
@@ -105,7 +113,7 @@ function onClick(e) {
 }
 
 function generateCourtInfo(court) {
-	console.log(court.colors)
+	console.log(court.colors);
 	let courtInfo = document.createElement("div");
 	courtInfo.classList.add("courtCard");
 	courtInfo.id = `courtCard_${court.id}`;
@@ -176,8 +184,8 @@ function showMaterials(courtName, id, length, width) {
 	if (currentCourtCard) {
 		currentCourtCard.style.display = "none";
 		const materialsContainer = document.createElement("div");
-		let color = document.querySelector('#color-option')
-		console.log(color)
+		let color = document.querySelector("#color-option");
+		console.log(color);
 		materialsContainer.id = `materialsContainer`;
 		materialsContainer.classList.add("courtCard");
 		let area = length * width;
@@ -223,18 +231,19 @@ function showMaterials(courtName, id, length, width) {
 		}
 
 		materialsContainer.innerHTML = `
-		<h1 style='position:relative;display:flex; align-self:center;transform: translateZ(60px);top:35px;'>${courtName} Material Needs</h1>
-		<div style='    position: absolute;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 13px;top: 230px;left: 179px;color: black;z-index: 50;font-size: 13px;'>
+		<h1 style='position: absolute;top: 146px;left: 80px;z-index: 100;'>${courtName}'s Material Needs</h1>
+		<div style='position: absolute;display: flex;flex-direction: row;align-items: center;height: 13px;top: 463px;left: 85px;color: black;z-index: 50;font-size: 13px;background-color: transparent;'>
 				<em>
 					<p>Numbers based on</p>
 				</em>
 				<em>
 				<p style='transform: translateZ(25px)'>Total Court Area: ${area}sq/ft </p>
 			</em>
+			
 	</div>
+	<img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='200'  height='200'>
 	<div class= materialWrapper>
 		<div class='matCardStyle'>
-      	  <img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='200'  height='200'style="    transform: translateZ(100px);border-radius: 15%;mix-blend-mode: darken;position: relative;left: 10%;">
 			<div class='BarrelListContainer'>
 				<div id='materialList'>
 				<p>Acrylic Resurfacer: <h6 class='measurementsStyle'>${acrylicResurfacer}</h6> <p style='color:gray;font-size:small;'>(*covers 2 coats w/ sand)</p> 
@@ -280,10 +289,12 @@ function showMaterials(courtName, id, length, width) {
 
 		currentCourtCard.insertAdjacentElement("afterend", materialsContainer);
 
-		$(".courtCard").tilt({
+		$(".court").tilt({
 			maxGlare: 0.0,
 			scale: 1,
 			maxTilt: 3,
+			
+
 		});
 	}
 	const customCourtBtn = document.getElementById("customCourt1");
@@ -296,7 +307,7 @@ function showMaterials(courtName, id, length, width) {
 const customCourtColor = (id, currentDisplay) => {
 	customCourtCard = currentDisplay;
 	customCourtCard.id = `customCourtCard_${id}`;
-	
+
 	customCourtCard.innerHTML = `
 	<form class= colorForm>
         <div class="parent">
@@ -339,19 +350,19 @@ const customCourtColor = (id, currentDisplay) => {
 <button class="btnCard" id="saveColors" type='submit' onclick="saveColorFunc(${id})">Save</button>
 </div>
 	`;
-	let outerBorder = document.querySelector('.childP')
-	console.log(outerBorder)
-	let courtArea = document.querySelector('.childs')
-	let kitchen = document.querySelector('.child2s')
-console.log(kitchen)
+	let outerBorder = document.querySelector(".childP");
+
+	let courtArea = document.querySelector("#childBtn");
+	let kitchen = document.querySelector("#childBtn2");
+
 	let thisHome = document.getElementById(`courtCard_${id}`);
 	const hasId = selectedColors.findIndex((item) => item.id == thisHome);
-	
+
 	if (hasId !== -1) {
 		num = hasId;
 		outerBorder.style.backgroundColor = selectedColors[num].colorOuter;
-		courtArea.style.backGroundColor = selectedColors[num].colorCourt;
-		kitchen.style.backGroundColor = selectedColors[num].colorKitchen;
+		courtArea.style.backgroundColor = selectedColors[num].colorCourt;
+		kitchen.style.backgroundColor = selectedColors[num].colorKitchen;
 	}
 	console.log(hasId.color);
 	$(".dropdown-content").tilt({
@@ -359,26 +370,28 @@ console.log(kitchen)
 		scale: 1,
 		maxTilt: 10,
 	});
-	colorWheel = (id, parents,target) => {
-			const dropdown = document.getElementById(`dropdown_${id}`);
-			dropdown.style.display =
-				dropdown.style.display === "block" ? "none" : "block";
-		const targetElement = document.getElementById(`customCourtCard_${id}`).querySelector(`#${parents}`);
+	colorWheel = (id, parents, target) => {
+		const dropdown = document.getElementById(`dropdown_${id}`);
+		dropdown.style.display =
+			dropdown.style.display === "block" ? "none" : "block";
+		const targetElement = document
+			.getElementById(`customCourtCard_${id}`)
+			.querySelector(`#${parents}`);
 		colorChanger = (id, color) => {
-			console.log(target)
-			
+			console.log(target);
+
 			targetElement.style.backgroundColor = color;
 			console.log(target);
 		};
 	};
 	saveColorFunc = (id) => {
-		let thisHome = document.getElementById(`courtCard_${id}`)
-		let parentBtn = document.getElementById('parentBtn')
-		let childBtn = document.getElementById('childBtn')
-		let childBtn2 = document.getElementById('childBtn2')
+		let thisHome = document.getElementById(`courtCard_${id}`);
+		let parentBtn = document.getElementById("parentBtn");
+		let childBtn = document.getElementById("childBtn");
+		let childBtn2 = document.getElementById("childBtn2");
 
 		parentBtn.textContent = parentBtn.style.backgroundColor;
-		let parent = parentBtn.textContent
+		let parent = parentBtn.textContent;
 
 		childBtn.textContent = childBtn.style.backgroundColor;
 		let child = childBtn.textContent;
@@ -386,34 +399,37 @@ console.log(kitchen)
 		childBtn2.textContent = childBtn2.style.backgroundColor;
 		let child2 = childBtn2.textContent;
 
-		
-		
-		 const existingColorIndex = selectedColors.findIndex(
-				(item) => item.id === thisHome
-			);
-			if (existingColorIndex !== -1) {
-				selectedColors[existingColorIndex].colorOuter = parent;
-				selectedColors[existingColorIndex].colorCourt = child;
-				selectedColors[existingColorIndex].colorKitchen = child2;
-			} else {
-				selectedColors.push({ colorOuter: parent,colorCourt: child,colorKitchen: child2, id: thisHome });
-			}
-		console.log(selectedColors)
+		const existingColorIndex = selectedColors.findIndex(
+			(item) => item.id === thisHome
+		);
+		if (existingColorIndex !== -1) {
+			selectedColors[existingColorIndex].colorOuter = parent;
+			selectedColors[existingColorIndex].colorCourt = child;
+			selectedColors[existingColorIndex].colorKitchen = child2;
+		} else {
+			selectedColors.push({
+				colorOuter: parent,
+				colorCourt: child,
+				colorKitchen: child2,
+				id: thisHome,
+			});
+		}
+		console.log(selectedColors);
 	};
 };
 function exitMaterials(id) {
 	const materialsContainer = document.getElementById(`materialsContainer`);
 	const currentCourtCard = document.getElementById(`courtCard_${id}`);
-	const customCourtCard = document.getElementById(`customCourtCard_${id}`)
+	const customCourtCard = document.getElementById(`customCourtCard_${id}`);
 	if (customCourtCard && currentCourtCard) {
 		customCourtCard.remove();
 		currentCourtCard.style.display = "flex";
 		currentCourtCard.classList.add("courtCard");
-	}else if (materialsContainer && currentCourtCard) {
-			materialsContainer.remove();
-			currentCourtCard.style.display = "flex";
-			currentCourtCard.classList.add("courtCard");
-	} 
+	} else if (materialsContainer && currentCourtCard) {
+		materialsContainer.remove();
+		currentCourtCard.style.display = "flex";
+		currentCourtCard.classList.add("courtCard");
+	}
 }
 function changeInputs(id) {
 	const currentForm = document.getElementById(`courtCard_${id}`);
