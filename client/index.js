@@ -7,11 +7,8 @@ const courtNameInput = document.getElementById("courtName");
 const lengthInput = document.getElementById("length");
 const widthInput = document.getElementById("width");
 let numColors = document.getElementById("color");
-let courtObjects = [];
 const baseURL = "http://localhost:4500/api";
 const selectedColors = [];
-
-
 
 $(".youTubeLogo").tilt({
 	maxGlare: 0,
@@ -293,8 +290,6 @@ function showMaterials(courtName, id, length, width) {
 			maxGlare: 0.0,
 			scale: 1,
 			maxTilt: 3,
-			
-
 		});
 	}
 	const customCourtBtn = document.getElementById("customCourt1");
@@ -371,18 +366,38 @@ const customCourtColor = (id, currentDisplay) => {
 		maxTilt: 10,
 	});
 	colorWheel = (id, parents, target) => {
+		
 		const dropdown = document.getElementById(`dropdown_${id}`);
 		dropdown.style.display =
 			dropdown.style.display === "block" ? "none" : "block";
 		const targetElement = document
 			.getElementById(`customCourtCard_${id}`)
 			.querySelector(`#${parents}`);
-		colorChanger = (id, color) => {
-			console.log(target);
+// 		setTimeout(function () {
+// 			let alarmMsg = document.createElement("div")
+// 			if (alarmMsg.classList.contains('alarmMsg')) {
+// 				return;
+// 			}
+// 				alarmMsg.classList.add('alarmMsg')
+// 				alarmMsg.innerHTML = `
+// 				<div class=alarmBox>
+// 				<p>pick a color!</p>
+// 				</div>
+// 				`;
+// 				targetElement.appendChild(alarmMsg);
+				
+		
+// 		setTimeout(function () {
+// 			alarmMsg.remove();
+// 		}, 15000);
+// 	}, 1000
+// 	)
+// ;
 
+		colorChanger = (id, color) => {
 			targetElement.style.backgroundColor = color;
-			console.log(target);
 		};
+		
 	};
 	saveColorFunc = (id) => {
 		let thisHome = document.getElementById(`courtCard_${id}`);

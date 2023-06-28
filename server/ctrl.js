@@ -5,14 +5,14 @@ module.exports = {
     getAllCards: (req, res) => {
         // Exclude the first item from the cards array
     
-        res.status(200).send(cards);
+        res.status(200).send(cards.reverse());
         
       },
 
     addCourt: (req,res)=>{
         req.body.id = cards[cards.length-1].id+1
         cards.push(req.body)
-        res.status(200).send(cards)
+        res.status(200).send(cards.reverse())
     },
     deleteCourt: (req, res) => {
         const { id } = req.params;
@@ -26,7 +26,7 @@ module.exports = {
     
         cards = updatedCards;
     
-        res.status(200).send(cards);
+        res.status(200).send(cards.reverse());
     },
     
     updateCourt: (req,res)=>{
@@ -45,7 +45,7 @@ module.exports = {
         delete req.body.Uname
         //update Court information with the data from the req.body
         cards[courtIndex] = { ...cards[courtIndex], ...req.body }
-        res.status(200).send(cards)
+        res.status(200).send(cards.reverse())
         
     }
 }

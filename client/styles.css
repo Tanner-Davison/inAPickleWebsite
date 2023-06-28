@@ -319,7 +319,7 @@ border-radius: 35%;
 }
 
 #materialList:hover{
-	cursor:none;
+	cursor:pointer;
 	border: 5px outset snow;
 	border-radius: 7%;
 	gap:12px;
@@ -546,4 +546,18 @@ position: relative;
 		bottom:0px;
 		gap:20px;
 	}
-	
+	.alarmMsg{
+		position: absolute;
+    width: 100px;
+    height: 50px;
+    z-index: 100;
+    background-color: white;
+    border-radius: 50%;
+	border-top-left-radius: 30%;
+	border-bottom-left-radius:0%;
+    color: black;
+    top: -152px;
+    bottom: 7px;
+    right: -286px;
+
+	}
