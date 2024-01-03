@@ -127,7 +127,7 @@ function generateCourtInfo(court) {
 		}'s Court</h1>
 		<br>
     <div class='imageClassWL'>
-        <img alt="Pickleball Court" id="courtIMG" src="/photos/pickleball.png" width='350'  height='200'style="transform: translateZ(65px);border-radius:15%;">
+        <img alt="Pickleball Court" id="courtIMG" src="../photos/pickleball.png" width='350'  height='200'style="transform: translateZ(65px);border-radius:15%;">
 		<p id='child'style='color: lightgray;'>
 		${court.width} X ${court.length}
     	</p>
@@ -238,7 +238,7 @@ function showMaterials(courtName, id, length, width) {
 			</em>
 			
 	</div>
-	<img alt="Barrel" id="barrelImg" src="/photos/barrel.png" width='200'  height='200'>
+	<img alt="Barrel" id="barrelImg" src="../photos/barrel.png" width='200'  height='200'>
 	<div class= materialWrapper>
 		<div class='matCardStyle'>
 			<div class='BarrelListContainer'>
@@ -337,7 +337,7 @@ const customCourtColor = (id, currentDisplay) => {
 
 </div>
 		 <div class="courtDesign">
-		<img class='imgGridBox'src="/photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'>
+		<img class='imgGridBox'src="../photos/pickleballCourt.png" alt="thumbnail" height='300' width='500'>
 	</div> 
 </form>
 <div class='colorBtnContainer'>
@@ -467,7 +467,7 @@ function changeInputs(id) {
   </div>
  	</div>
   </form>
-    <img alt="Pickleball Court" id="courtIMG" src="/photos/pickleball.png" width='350' height='200'style="transform: translateZ(55px);border-radius:15%;">
+    <img alt="Pickleball Court" id="courtIMG" src="../photos/pickleball.png" width='350' height='200'style="transform: translateZ(55px);border-radius:15%;">
  </div>
 </div>
   `;
